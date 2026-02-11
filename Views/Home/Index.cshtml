@@ -1,0 +1,305 @@
+﻿@using MyPage.Extensions;
+@{
+    ViewData["Title"] = "Андрей Мисирук";
+    Layout = "_Layout";
+}
+@section Scripts {
+    @Html.RenderScript("my-page.js")
+}
+
+<div class="main-page">
+    <div v-if="validPageSize" class="page">
+        <div class="using-header flex-vertical">
+            <using-header value="Microsoft.AspNetCore.Mvc;"></using-header>
+            <using-header value="Net8;"></using-header>
+            <using-header value="Vue2;"></using-header>
+        </div>
+        <div class="first-body centerer">
+            <div class="flex-horizontal full-width">
+                <div class="flex">
+                    <div class="space-between-flex-container flex full-width">
+                        <div class="flex-reversed vertical-centerer full-width developer-part">
+                            <div class="flex">
+                                <div class="flex developer-word">
+                                    DEVELOPER
+                                </div>
+                            </div>
+                            <div class="flex developer-type">
+                                <div class="developer-type-word flex">
+                                    {{ workText }}
+                                </div>
+                                <div class="developer-enter-letter flex">
+                                    {{ enterLetter }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stretched-flex-item flex">
+                    <div class="space-between-flex-container flex full-width">
+                        <div class="flex">
+                            <div class="flex">
+                                <img src="assets/my-photo.jpeg" class="my-photo" />
+                            </div>
+                            <div class="flex">
+                                <div class="flex-vertical">
+                                    <div class="my-name">
+                                        АНДРЕЙ
+                                    </div>
+                                    <div class="my-name">
+                                        МИСИРУК
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-reversed">
+                            <div class="flex-vertical">
+                                <div class="contact flex vertical-centerer" @@mouseover="tgHover = true" @@mouseleave="tgHover = false" @@click="tgDivClickHandle">
+                                    <a id="tg-link" ref="tg-link" class="non-displayed" href="https://t.me/holydreams117" target="_blank"></a>
+                                    <img v-if="tgHover === true" class="contact-icon" src="/icons/telegram-blue.svg" />
+                                    <img v-else class="contact-icon" src="/icons/telegram-white.svg" />
+                                    <div class="flex vertical-centerer">
+                                        @@holydreams117
+                                    </div>
+                                </div>
+                                <div class="contact flex vertical-centerer" @@mouseover="mailHover = true" @@mouseleave="mailHover = false" @@click="mailDivClickHandle">
+                                    <a id="mail-link" ref="mail-link" class="non-displayed" href="mailto:andrew@misiruk.ru"></a>
+                                    <img v-if="mailHover === true" class="contact-icon" src="/icons/email-blue.svg" />
+                                    <img v-else class="contact-icon" src="/icons/email-white.svg" />
+                                    andrew@@misiruk.ru
+                                </div>
+                                <div class="contact flex vertical-centerer" @@mouseover="gitHover = true" @@mouseleave="gitHover = false" @@click="gitDivClickHandle">
+                                    <a id="git-link" ref="git-link" class="non-displayed" href="https://github.com/HolyDreams" target="_blank"></a>
+                                    <img v-if="gitHover === true" class="contact-icon" src="/icons/github-blue.svg" />
+                                    <img v-else class="contact-icon" src="/icons/github-white.svg" />
+                                    HolyDreams
+                                </div>
+                                <div class="contact flex vertical-centerer" @@mouseover="hhHover = true" @@mouseleave="hhHover = false" @@click="hhDivClickHandle">
+                                    <a id="hh-link" ref="hh-link" class="not-displayed" href="https://hh.ru/resume/e3d36768ff0b755d870039ed1f6d4977444559" target="_blank"></a>
+                                    <img v-if="hhHover === true" class="contact-icon" src="/icons/hh-blue.svg" />
+                                    <img v-else class="contact-icon" src="/icons/hh-white.svg" />
+                                    <div class="flex vertical-centerer">
+                                        C# разработчик
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="second-body">
+            <div class="flex-horizontal">
+                <div class="flex full-width">
+                    <div class="flex resume-head">
+                        <div v-for="text in resumeText" class="flex">
+                            <div v-if="text.t === 1" class="resume-var-color flex">
+                                {{ text.c }}
+                            </div>
+                            <div v-else-if="text.t === 2" class="resume-main-color flex">
+                                {{ text.c }}
+                            </div>
+                            <div v-else-if="text.t === 3" class="resume-light-green-color flex">
+                                {{ text.c }}
+                            </div>
+                            <div v-else class="resume-base-color flex">
+                                {{ text.c }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-between-flex-container flex full-width" style="height: 85vh;">
+                    <div class="flex-vertical horizontal-centerer" style="margin-top: -15vh;margin-left: 2vw;">
+                        <div class="languages">ТЕХНОЛОГИЧЕСКИЙ СТЕК</div>
+                        <div class="flex-vertical" style="height: 510px">
+                            <div v-if="techStackHidden === true" class="flex lang">
+                                <div class="first-row flex">
+                                    <div class="using-row-numb">1</div>
+                                    <div class="tech-hide-button centerer"><img src="/icons/arrow-right.svg" @@click="function() { techStackHidden = false; }"></div>
+                                    <using-header :value="'...'" class="horizontal-centerer"></using-header>
+                                </div>
+                            </div>
+                            <div v-else v-for="(lang, ind) in getLanguages()" class="flex-vertical lang">
+                                <div v-if="ind === 0" class="first-row flex">
+                                    <div class="using-row-numb">{{ ind + 1 }}</div>
+                                    <div class="tech-hide-button centerer"><img src="/icons/arrow-button.svg" @@click="function() { techStackHidden = true; }" /></div>
+                                    <using-header :value="lang" class="horizontal-centerer"></using-header>
+                                </div>
+                                <div v-else-if="ind === (getLanguages().length - 1)" class="last-row flex">
+                                    <div class="using-row-numb">{{ ind + 1 }}</div>
+                                    <div class="tech-hide-button"><div class="tech-arrow"></div></div>
+                                    <using-header :value="lang" class="horizontal-centerer"></using-header>
+                                </div>
+                                <div v-else class="using-row flex">
+                                    <div class="using-row-numb">{{ ind + 1 }}</div>
+                                    <div class="tech-hide-button"><div class="tech-arrow"></div></div>
+                                    <using-header :value="lang" class="horizontal-centerer"></using-header>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-reversed" style="margin-top: -10vh;">
+                        <div class="flex-vertical horizontal-centerer">
+                            <div class="flex info">
+                                Опыт разработки с 2022 года. Самоучка, по видео и книжкам изучил язык C#. Сделал свой первый пет-проект DISCORD-бота.
+                            </div>
+                            <div class="flex info">
+                                Быстро понимаю, что, зачем и куда. Неоднократно разрабатывал проекты с 0, а также вникал и поддерживал существующие системы. Собирал докеры с сервисами, делал самообновляемые десктоп приложения, делал, ставил и обновлял сервисы на linux.
+                            </div>
+                            <div class="flex info" style="padding-bottom: 0;">
+                                Имеется жизненный опыт работы с продажами и управлением складом. Как IT-специалист работал в компаниях с уклоном на: биллинг (учёт энергоресурсов), завод-производство промышленного оборудования, OCR, документооборот. Писал интеграции с: amoCRM, YClients, Pyrus, BNOVO, Saby.Docs, Google.Drive, 1С.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="third-body">
+            <div class="flex-vertical full-width">
+                <div class="expirience-head" id="expirience-head">ОПЫТ РАБОТЫ</div>
+                <div class="flex-vertical centerer" style="height: 80vh;">
+                    <div class="flex-vertical expirience-header" @@click="toggleExpExpand(0)">
+                        <div class="exp-row-line"></div>
+                        <div class="flex expirience-row">
+                            <div class="expirience-name flex">
+                                <div class="expirience-text">
+                                    АО "Элдис"/ООО «Старорусприбор»
+                                </div>
+                            </div>
+                            <div class="expirience-job-title flex">
+                                <div class="expirience-text">
+                                    Инженер-программист
+                                </div>
+                            </div>
+                            <div class="expirience-time flex">
+                                <div class="expirience-text">
+                                    2022-2023
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exp-row-line"></div>
+                    </div>
+                    @* <div v-if="isShowedExp(0)" class="flex-vertical expirience-body"> *@
+                    <div class="flex-vertical expirience-body" id="first-exp">
+                        <div class="flex-vertical expirience-text">
+                            <div class="main-color">Основной стек:</div> C# 4.#, .net 6, MSSQL, PostgreSQL, Git, DevExpress. <br /><br />
+
+                            <div class="main-color">Основные задачи:</div>
+                            - Создание десктопных приложений.<br />
+                            - Создание базы данных.<br />
+                            - Создание интеграций между системами.<br /><br />
+
+                            За время работы с нуля написал более 10 приложений, базы данных для них.<br /><br />
+
+                            <div class="main-color">
+                                Могу отметить проекты:
+                            </div>
+                            - Планирование производства: ERP для производства, интегрированная с Tflex и другими внутренними сервисами. (C# 4.7, PostgreSQL, DevExpress)<br />
+                            - Склады: Аналог 1с склады, для учета остатков и движения материалов на складах. (C# 4.7, PostgreSQL, DevExpress)<br />
+                            - ПрограмМенеджер: пользовательская десктоп приложение для доступа ко всем внутренним приложениям и управления пользователями. Также, служило сервисом для обновления программ для программистов. (Стэк C# 4.7, net6, PostgreSQL, DevExpress)<br />
+                            - Отчёты: поддержка старых и создание новых отчётов для подсчёта электроэнергии. (C# net6, MSSQL, Stimulsoft)<br />
+                        </div>
+                    </div>
+                    <div class="flex-vertical expirience-header" @@click="toggleExpExpand(1)">
+                        <div class="exp-row-line"></div>
+                        <div class="flex expirience-row">
+                            <div class="expirience-name flex">
+                                <div class="expirience-text">
+                                    ООО "ИСЕРВ"
+                                </div>
+                            </div>
+                            <div class="expirience-job-title flex">
+                                <div class="expirience-text">
+                                    Инженер-программист
+                                </div>
+                            </div>
+                            <div class="expirience-time flex">
+                                <div class="expirience-text">
+                                    2023-2024
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exp-row-line"></div>
+                    </div>
+                    @* <div v-if="isShowedExp(1)" class="flex-vertical expirience-body"> *@
+                    <div class="flex-vertical expirience-body" id="second-exp">
+                        <div class="flex-vertical expirience-text">
+                            <div class="main-color">
+                                Основной стек:
+                            </div> .net 7, PostgreSQL, MSSQL, ClickHouse, RabbitMQ, Docker, Azure devops (построение pipeline).<br /><br />
+
+                            <div class="main-color">
+                                Основные обязанности:
+                            </div>
+                            - Доработка сервисов.<br />
+                            - Анализ и исправление багов.<br />
+                            - Написание новых интеграций.<br /><br />
+
+                            <div class="main-color">
+                                Из проектов написанных с 0 могу отметить:
+                            </div>
+                            - Программа для нагрузочных тестов группы приложений: Проверка работоспособности сервисов при перегрузке CPU, RAM, пространстве на диске. Проверка работоспособности при отключении одного из сервисов. (C# net7, Docker, PostgreSQL)<br />
+                            - Сервис обрабатывающий информацию по подпискам с брокера сообщений. (C# net7, MSSQL, RabbigMQ, Docker)<br />
+                        </div>
+                    </div>
+                    <div class="flex-vertical expirience-header" @@click="toggleExpExpand(2)">
+                        <div class="exp-row-line"></div>
+                        <div class="flex expirience-row">
+                            <div class="expirience-name flex">
+                                <div class="expirience-text">
+                                    ООО "Розумсофт"
+                                </div>
+                            </div>
+                            <div class="expirience-job-title flex">
+                                <div class="expirience-text">
+                                    Ведущий программист
+                                </div>
+                            </div>
+                            <div class="expirience-time flex">
+                                <div class="expirience-text">
+                                    2024-2025
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exp-row-line"></div>
+                    </div>
+                    <div class="flex-vertical expirience-body" id="third-exp">
+                        <div class="flex-vertical expirience-text">
+                            <div class="main-color">
+                                Основной стек:
+                            </div> net5, net8, net 4.*, PostgreSQL, MSSQL, RabbitMQ, MVC, Razor, SOAP, js, vue2, Docker, EF, Dapper, ElasticSearch.<br /><br />
+
+                            <div class="main-color">
+                                Основные обязанности:
+                            </div>
+                            - Разработка сервисов и интеграций с 0.<br />
+                            - Расширение функционала и поддержка сервисов.<br />
+                            - Анализ и исправление багов.<br /><br />
+
+                            Поддерживал более 17 проектов, из которых 6 написаны с нуля.<br />
+                            <div class="main-color">
+                                Написанные сервисы с 0:
+                            </div>
+                            - 2 on-prem сервиса для заказчиков (net8, интеграция с 1С)<br />
+                            - Интеграция с YCLIENTS (net8, vue2, iframe)<br />
+                            - Интеграция с GoogleDrive (net8)<br />
+                            - Интеграция с Saby (net 8)<br />
+                            - Расширение для GoogleChrome (js, vue)<br />
+                        </div>
+                    </div>
+                    <div class="exp-row-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-else class="page">
+        <div class="full-size centerer" style="height: 95vh;">
+            <div class="flex-vertical">
+                <div class="fail-text centerer">
+                    К сожалению, <br/>неподдерживаемое <br /> разрешение экрана.
+                </div>
+                <img src="/assets/nikifor.jpg" class="nikifor-photo" />
+            </div>
+        </div>
+    </div>
+</div>

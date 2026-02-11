@@ -1,0 +1,299 @@
+﻿@import "layout.scss";
+
+body {
+    background-color: $background-color;
+    color: $font-color;
+}
+
+#main-part-wrapper {
+    overflow-x: auto;
+}
+
+.page {
+    @extend .flex-vertical;
+    width: 100%;
+    height: 100%;
+}
+
+.my-photo {
+    max-width: 500px;
+    max-height: 500px;
+    width: 25vh;
+    height: 25vh;
+    padding-left: 2vw;
+}
+
+.first-body {
+    width: 100%;
+    height: 100vh;
+    margin-top: -44px;
+}
+
+.secong-body {
+    width: 100%;
+    height: 100%;
+}
+
+.third-body {
+    width: 100%;
+    height: 100vh;
+
+    overflow-x: hidden;
+}
+
+.my-name {
+    @extend .main-font;
+    font-size: 10vh;
+    font-weight: bold;
+    padding-left: 1vw;
+}
+
+.contact {
+    @extend .main-font;
+    width: 230px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 2vw;
+    color: $font-color;
+    border: 0;
+    cursor: pointer;
+    border-top: 2px solid $background-color;
+    border-bottom: 2px solid $background-color;
+}
+
+.contact:hover {
+    color: $var-color;
+    border-top: 2px solid $var-color;
+    border-bottom: 2px solid $var-color;
+}
+
+.contact-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 7px;
+}
+
+.developer-part {
+    @extend .main-font;
+    font-size: 50px;
+    font-weight: bold;
+    margin-right: 1vw;
+
+    .developer-word {
+        color: $main-color;
+    }
+
+    .developer-type {
+        width: 290px;
+    }
+}
+
+.languages {
+    @extend .main-font;
+    font-size: 30px;
+    font-weight: bold;
+    color: $var-color;
+}
+
+.lang {
+    .using-row {
+        @extend .main-font;
+        font-size: 23px;
+
+        .using-row-numb {
+            color: $dark-gray-color;
+            width: 50px;
+            text-align: end;
+            padding-right: 35px;
+            padding-top: 4px;
+        }
+
+        .tech-hide-button {
+            width: 30px;
+            height: 30px;
+
+            .tech-arrow {
+                width: 1px;
+                height: 30px;
+                content: "";
+                background: $dark-gray-color;
+            }
+        }
+
+        .vw-using-header {
+            .vw-using, .vw-using-text {
+                font-size: 23px;
+                padding-top: 4px;
+            }
+        }
+    }
+
+    .using-row:hover {
+        .using-row-numb {
+            color: $font-color;
+        }
+    }
+
+    .first-row {
+        @extend .using-row;
+
+        .using-row-numb {
+            padding-right: 21px;
+        }
+
+        .vw-using-header {
+            .vw-using {
+                border-left: 0;
+                padding-left: 15px;
+            }
+        }
+
+        img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+    }
+
+    .last-row {
+        @extend .using-row;
+
+        .tech-hide-button {
+            .tech-arrow:before {
+                content: "";
+                position: absolute;
+                background: $dark-gray-color;
+                width: 15px;
+                height: 1px;
+                margin: 30px 0 0 0;
+            }
+        }
+    }
+}
+
+.info {
+    @extend .main-font;
+    font-size: 3vh;
+    padding: 0 3vh 4vh 0;
+    text-align: end;
+    max-width: 55vw;
+}
+
+.resume-head {
+    @extend .my-name;
+    margin-left: auto;
+    padding-right: 2vw;
+    font-size: 15vh;
+
+    .resume-base-color {
+        color: $font-color;
+    }
+
+    .resume-var-color {
+        color: $var-color;
+    }
+
+    .resume-main-color {
+        color: $main-color;
+    }
+
+    .resume-light-green-color {
+        color: $light-green-color;
+    }
+}
+
+.expirience-head {
+    @extend .my-name;
+    font-size: 10vh;
+    margin-left: -44vw;
+    margin-top: 8vh;
+    transition: margin 1000ms;
+}
+
+.expirience-header {
+    @extend .main-font;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+
+    .exp-row-line {
+        content: "";
+        background: $dark-gray-color;
+        width: 85vw;
+        height: 1px;
+        margin-left: 10vw;
+    }
+
+    .expirience-row {
+        padding: 8px 0 8px 0;
+    }
+}
+
+.expirience-header:hover {
+    .expirience-name {
+        border-right: 1px solid $var-color;
+    }
+
+    .expirience-time {
+        border-left: 1px solid $var-color;
+    }
+
+    .exp-row-line {
+        background: $var-color;
+    }
+}
+
+.expirience-name {
+    text-align: end;
+    border-right: 1px solid $dark-gray-color;
+    width: 35vw;
+    padding-right: 1vw;
+    margin-left: 5vw;
+}
+
+.expirience-job-title {
+    text-align: center;
+    width: 30vw
+}
+
+.expirience-time {
+    text-align: start;
+    border-left: 1px solid $dark-gray-color;
+    width: 35vw;
+    padding-left: 1vw;
+}
+
+.expirience-text {
+    width: 100%;
+}
+
+.expirience-body {
+    @extend .main-font;
+    height: 0px;
+    transition: height 0.3s ease;
+    /*background: #d5d5d5;*/
+    overflow: hidden;
+    font-size: 15px;
+
+    .main-color {
+        color: $main-color;
+    }
+
+    .expirience-text {
+        width: 80vw;
+        padding: 1vh 0vw 1vh 10vw;
+    }
+}
+
+.fail-text {
+    @extend .main-font;
+    width: 450px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.nikifor-photo {
+    width: 450px;
+    height: 450px;
+}

@@ -1,0 +1,9 @@
+﻿@import "shared.scss";
+
+html, #global-wrapper {
+    @extend .full-size;
+}
+
+#global-wrapper {
+    @extend .flex-vertical;
+}

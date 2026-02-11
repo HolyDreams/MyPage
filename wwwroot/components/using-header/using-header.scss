@@ -1,0 +1,17 @@
+﻿@import "../../styles/shared.scss";
+
+.vw-using-header {
+    cursor: default;
+}
+
+.vw-using {
+    @extend .medium-font;
+    color: $main-color;
+    padding-left: 2px;
+    padding-right: 8px;
+}
+
+.vw-using-text {
+    @extend .medium-font;
+    color: $font-color;
+}
